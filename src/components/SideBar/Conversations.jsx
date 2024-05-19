@@ -11,6 +11,7 @@ const Conversations = () => {
     setConversations(response);
     setLoading(false);
   };
+
   useEffect(() => {
     fetchConversations();
   }, []);

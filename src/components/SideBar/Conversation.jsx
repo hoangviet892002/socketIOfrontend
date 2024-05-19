@@ -1,7 +1,11 @@
 import { useDispatch } from "react-redux";
 import { sellectConversation } from "../../redux/actions/conversationAction";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 const Conversation = ({ conversation, emoji }) => {
   const dispatch = useDispatch();
+  const onlineUsers = useSelector((state) => state.socket.onlineUsers);
+  const isOnline = onlineUsers.includes(conversation._id);
 
   const handleSelectConversation = (e) => {
     e.preventDefault();
@@ -14,7 +18,7 @@ const Conversation = ({ conversation, emoji }) => {
         className="flex gap-2 items-center hover:bg-sky-500 rounded py-1 cursor-pointer"
         onClick={handleSelectConversation}
       >
-        <div className="avatar online">
+        <div className={`avatar ${isOnline ? "online" : ""}`}>
           <div className="w-12 rounded-full">
             <img src={conversation.profilePic} alt="user avatar" />
           </div>

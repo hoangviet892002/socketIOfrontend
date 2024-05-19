@@ -1,5 +1,7 @@
 const initialState = {
   sellectConversation: null,
+  dataReceiver: null,
+  Receiver: [],
 };
 
 const conversationReducer = (state = initialState, action) => {

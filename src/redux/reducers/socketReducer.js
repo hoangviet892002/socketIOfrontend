@@ -1,6 +1,7 @@
 const initialState = {
   socket: null,
   onlineUsers: [],
+  rooms: null,
 };
 
 function socketReducer(state = initialState, action) {
@@ -14,6 +15,11 @@ function socketReducer(state = initialState, action) {
       return {
         ...state,
         onlineUsers: action.payload,
+      };
+    case "SET_ROOM":
+      return {
+        ...state,
+        rooms: action.payload,
       };
     default:
       return state;

@@ -1,3 +1,4 @@
 import SideBar from "./SideBar";
 import MessengerContainer from "./messages";
-export { SideBar, MessengerContainer };
+import Board from "./game/board";
+export { SideBar, MessengerContainer, Board };

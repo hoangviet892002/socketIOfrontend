@@ -21,7 +21,7 @@ const CaroBoard = () => {
 
   const handleClick = (row, col) => {
     // Check if it's the user's turn
-    if (rooms.turn !== user._id) {
+    if (rooms.turn !== user._id || rooms.status === "finish") {
       return; // If it's not the user's turn, do nothing
     }
 

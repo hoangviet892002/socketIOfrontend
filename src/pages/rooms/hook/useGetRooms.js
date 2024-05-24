@@ -23,6 +23,9 @@ const useGetRooms = () => {
         dispatch(setRooms(rooms));
         toast("Đối thủ đã thoát");
       });
+      socket?.on("not-enough-money", () => {
+        toast("Not enough money");
+      });
       return () => {
         socket.close();
       };
@@ -36,9 +39,10 @@ const useGetRooms = () => {
       };
     }
   }, [socket]);
-  const joinRoom = async () => {
+  const joinRoom = async (money) => {
     socket.emit("joinroom", {
       user: user,
+      money: money,
     });
   };
 

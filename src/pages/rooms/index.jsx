@@ -10,21 +10,32 @@ const RoomList = () => {
   useListenJoin();
   useSocket();
   const { joinRoom } = useGetRooms();
-  const handleJoinRoom = () => {
-    joinRoom();
+  const handleJoinRoom = (money) => {
+    joinRoom(money);
   };
-  console.log(rooms);
 
+  const money = [500, 1000, 1500, 9000];
   return (
     <div>
       <h1>Available Rooms</h1>
       {rooms && rooms.status === "created" && <>Wait</>}
       {rooms === null && (
-        <button className="btn btn-neutral" onClick={() => handleJoinRoom()}>
-          Join Room
-        </button>
+        <>
+          {money.map((item) => {
+            return (
+              <button
+                className="btn btn-neutral m-5"
+                onClick={() => handleJoinRoom(item)}
+              >
+                Join Room {item}
+              </button>
+            );
+          })}
+        </>
       )}
-      {rooms && rooms.status === "ready" && <Board />}
+      {rooms && (rooms.status === "ready" || rooms.status === "finish") && (
+        <Board />
+      )}
     </div>
   );
 };

@@ -45,8 +45,13 @@ const useGetRooms = () => {
       money: money,
     });
   };
+  const joinRoomBot = async () => {
+    socket.emit("joinroom-ai", {
+      user: user,
+    });
+  };
 
-  return { joinRoom };
+  return { joinRoom, joinRoomBot };
 };
 
 export default useGetRooms;

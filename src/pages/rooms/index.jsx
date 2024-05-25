@@ -9,9 +9,12 @@ const RoomList = () => {
   const rooms = useSelector((state) => state.socket.rooms);
   useListenJoin();
   useSocket();
-  const { joinRoom } = useGetRooms();
+  const { joinRoom, joinRoomBot } = useGetRooms();
   const handleJoinRoom = (money) => {
     joinRoom(money);
+  };
+  const handleJoinRoomBot = () => {
+    joinRoomBot();
   };
 
   const money = [500, 1000, 1500, 9000];
@@ -21,6 +24,12 @@ const RoomList = () => {
       {rooms && rooms.status === "created" && <>Wait</>}
       {rooms === null && (
         <>
+          <button
+            className="btn btn-neutral m-5"
+            onClick={() => handleJoinRoomBot()}
+          >
+            Play with bot
+          </button>
           {money.map((item) => {
             return (
               <button

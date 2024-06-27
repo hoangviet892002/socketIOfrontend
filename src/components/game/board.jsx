@@ -8,9 +8,9 @@ const CaroBoard = () => {
   const user = useSelector((state) => state.user.data);
   const { game } = useListenCaro();
 
-  const initialBoard = Array(20)
+  const initialBoard = Array(12)
     .fill(null)
-    .map(() => Array(20).fill(""));
+    .map(() => Array(12).fill(""));
   const [board, setBoard] = useState(initialBoard);
 
   useEffect(() => {

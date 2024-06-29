@@ -17,7 +17,7 @@ const RoomList = () => {
     joinRoomBot();
   };
 
-  const money = [500, 1000, 1500, 9000];
+  const money = [100, 200, 500, 1000, 2000, 5000];
   return (
     <div>
       <h1>Available Rooms</h1>
